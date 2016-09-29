@@ -1,0 +1,21 @@
+.dy-legend {
+  text-align: right;
+  padding-top: 15px;
+  padding-bottom: -15px;
+  padding-right: 5%;
+  padding-left: 5%;
+  width: 90%;
+}
+
+#all_country_dygraph .dygraph-title, #first_visit_dygraph .dygraph-title, #last_action_dygraph .dygraph-title, #most_common_dygraph .dygraph-title {
+  font-weight: normal;
+  font-size: x-small;
+}
+
+.large {
+  font-size: large;
+}
+
+.small {
+  font-size: small;
+}
