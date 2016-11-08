@@ -195,7 +195,7 @@ function(input, output, session) {
       summarise_(us_total=paste0("sum(`",this_metric,"`)")) %>% ungroup()
     hc <- highchart() %>%
       hc_chart(type = "pie", plotBackgroundColor=NULL, plotBorderWidth=NULL, plotShadow=F) %>%
-      hc_title(text = paste0("Number of ", this_metric, " by Country")) %>%
+      hc_title(text = paste0(this_metric, " by Country")) %>%
       hc_tooltip(pointFormat = '{point.y} ({point.percentage:.1f}%)') %>%
       hc_plotOptions(
         pie = list(
