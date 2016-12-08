@@ -74,7 +74,7 @@ function(request) {
         				  div(id = "cntr_a_legend", class = "large", style = "text-align: center; padding: 15px 10px 0 10px;"),	 
         				  DT::dataTableOutput("all_country_tbl")
               ),				
-              includeMarkdown("./tab_documentation/xxx.md")
+              includeMarkdown("./tab_documentation/traffic_ctr.md")
       ),
 			  
       tabItem(tabName = "first_visits_by_country",
@@ -118,7 +118,7 @@ function(request) {
                     div(id = "cntr_f_legend", class = "large", style = "text-align: center; padding: 15px 10px 0 10px;"),
                     DT::dataTableOutput("first_visits_by_country_tbl")
                 ),
-                includeMarkdown("./tab_documentation/xxx.md")
+                includeMarkdown("./tab_documentation/first_visit.md")
       ),
 
       tabItem(tabName = "last_action_by_country",
@@ -162,7 +162,7 @@ function(request) {
                     div(id = "cntr_l_legend", class = "large", style = "text-align: center; padding: 15px 10px 0 10px;"),
                     DT::dataTableOutput("last_action_by_country_tbl")
                 ),
-                includeMarkdown("./tab_documentation/xxx.md")
+                includeMarkdown("./tab_documentation/last_action.md")
       ),
 
       tabItem(tabName = "most_common_by_country",
@@ -206,7 +206,7 @@ function(request) {
                     div(id = "cntr_m_legend", class = "large", style = "text-align: center; padding: 15px 10px 0 10px;"),
                     DT::dataTableOutput("most_common_by_country_tbl")
                 ),
-                includeMarkdown("./tab_documentation/xxx.md")
+                includeMarkdown("./tab_documentation/most_common.md")
       )
     )
     ),
