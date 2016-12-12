@@ -25,6 +25,8 @@ read_data <- function() {
   data("countrycode_data", package="countrycode")
   countrycode_data$country.name[c(44,54,143)] <- c("Cape Verde", "Congo, The Democratic Republic of the", "Macedonia, Republic of" )
   countrycode_data$continent[countrycode_data$country.name %in% c("British Indian Ocean Territory","Christmas Island","Taiwan, Province of China")] <- "Asia"
+  countrycode_data$continent[countrycode_data$country.name %in% c("Bermuda","Canada","Greenland","Saint Pierre and Miquelon","United States")] <- "Northern America"
+  countrycode_data$continent[countrycode_data$continent == "Americas"] <- "South America"
   
   
   all_country_data <- all_country_data[!duplicated(all_country_data[,1:2],fromLast=T),]
@@ -72,8 +74,8 @@ read_data <- function() {
   all_country_data_prop$Region[is.na(all_country_data_prop$Region)] <- "Other"  
   all_country_data <<- all_country_data[, c(1:2, 9, 3:8)] %>% arrange(Date, Country)
   all_country_data_prop <<- all_country_data_prop[, c(1:2, 9, 3:8)] %>% arrange(Date, Country)
-  us_data <<- us_data %>% mutate(Region="Americas") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)
-  us_data_prop <<- us_data_prop %>% mutate(Region="Americas") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)
+  us_data <<- us_data %>% mutate(Region="Northern America") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)
+  us_data_prop <<- us_data_prop %>% mutate(Region="Northern America") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)
 
   
   first_visits_country <- first_visits_country[!duplicated(first_visits_country[,1:3],fromLast=T),]
@@ -101,8 +103,8 @@ read_data <- function() {
   first_visits_country_prop$Region[is.na(first_visits_country_prop$Region)] <- "Other"  
   first_visits_country <<- first_visits_country[, c(1, 8:9, 2:7)] %>% arrange(Date, Country)
   first_visits_country_prop <<- first_visits_country_prop[, c(1, 8:9, 2:7)] %>% arrange(Date, Country)
-  first_visits_us <<- first_visits_us %>% mutate(Region="Americas") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)
-  first_visits_us_prop <<- first_visits_us_prop %>% mutate(Region="Americas") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)
+  first_visits_us <<- first_visits_us %>% mutate(Region="Northern America") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)
+  first_visits_us_prop <<- first_visits_us_prop %>% mutate(Region="Northern America") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)
 
 
   last_action_country <- last_action_country[!duplicated(last_action_country[,1:3],fromLast=T),]
@@ -130,8 +132,8 @@ read_data <- function() {
   last_action_country_prop$Region[is.na(last_action_country_prop$Region)] <- "Other"    
   last_action_country <<- last_action_country[, c(1, 8:9, 2:7)] %>% arrange(Date, Country)
   last_action_country_prop <<- last_action_country_prop[, c(1, 8:9, 2:7)] %>% arrange(Date, Country)
-  last_action_us <<- last_action_us %>% mutate(Region="Americas") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)
-  last_action_us_prop <<- last_action_us_prop %>% mutate(Region="Americas") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)  
+  last_action_us <<- last_action_us %>% mutate(Region="Northern America") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)
+  last_action_us_prop <<- last_action_us_prop %>% mutate(Region="Northern America") %>% select(c(1:2, 9, 3:8)) %>% arrange(Date, Country)  
  
  
   most_common_country <- most_common_country[!duplicated(most_common_country[,1:3],fromLast=T),]
@@ -159,8 +161,8 @@ read_data <- function() {
   most_common_country_prop$Region[is.na(most_common_country_prop$Region)] <- "Other"    
   most_common_country <<- most_common_country[, c(1, 7:8, 2:6)] %>% arrange(Date, Country)
   most_common_country_prop <<- most_common_country_prop[, c(1, 7:8, 2:6)] %>% arrange(Date, Country)
-  most_common_us <<- most_common_us %>% mutate(Region="Americas") %>% select(c(1:2, 8, 3:7)) %>% arrange(Date, Country)
-  most_common_us_prop <<- most_common_us_prop %>% mutate(Region="Americas") %>% select(c(1:2, 8, 3:7)) %>% arrange(Date, Country) 
+  most_common_us <<- most_common_us %>% mutate(Region="Northern America") %>% select(c(1:2, 8, 3:7)) %>% arrange(Date, Country)
+  most_common_us_prop <<- most_common_us_prop %>% mutate(Region="Northern America") %>% select(c(1:2, 8, 3:7)) %>% arrange(Date, Country) 
 }
 
 fill_out <- function(x, start_date, end_date, fill = 0) {

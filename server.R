@@ -376,8 +376,8 @@ function(input, output, session) {
       select(Region, Country, country_total, region_total) %>%
       unique() %>% ungroup() %>% arrange(Region, Country)
     data4pie_us <- first_visits_us %>%
-    filter(first_visits_us$Date >= input$date_all_country[1]
-           & first_visits_us$Date <= input$date_all_country[2]) %>%
+    filter(first_visits_us$Date >= input$date_first_visit[1]
+           & first_visits_us$Date <= input$date_first_visit[2]) %>%
       group_by(Country) %>%
       summarise_(us_total=paste0("sum(`",cntr_reactive$selected_metric_f,"`)")) %>% ungroup()
     hc <- highchart() %>%
@@ -555,8 +555,8 @@ function(input, output, session) {
       select(Region, Country, country_total, region_total) %>%
       unique() %>% ungroup() %>% arrange(Region, Country)
     data4pie_us <- last_action_us %>%
-    filter(last_action_us$Date >= input$date_all_country[1]
-           & last_action_us$Date <= input$date_all_country[2]) %>%
+    filter(last_action_us$Date >= input$date_last_action[1]
+           & last_action_us$Date <= input$date_last_action[2]) %>%
       group_by(Country) %>%
       summarise_(us_total=paste0("sum(`",cntr_reactive$selected_metric_l,"`)")) %>% ungroup()
     hc <- highchart() %>%
@@ -607,34 +607,34 @@ function(input, output, session) {
 
 
   most_common_country_dt <- reactive({
-    if (input$cntr_sort_l %in% c("us_l", "custom_l")){
+    if (input$cntr_sort_m %in% c("us_m", "custom_m")){
       fnl_tbl <- most_common_country %>%
       rbind(most_common_us) %>%
   	  filter(Date >= input$date_most_common[1]
   	         & Date <= input$date_most_common[2]
-  	         & Country %in% selected_country_l()) %>%
+  	         & Country %in% selected_country_m()) %>%
       arrange(Date, Country)
     } else{
       fnl_tbl <- most_common_country %>%
   	  filter(Date >= input$date_most_common[1]
   	         & Date <= input$date_most_common[2]
-  	         & Country %in% selected_country_l())
+  	         & Country %in% selected_country_m())
     }    
     return (fnl_tbl)
   })
   most_common_country_prop_dt <- reactive({
-    if (input$cntr_sort_l %in% c("us_l", "custom_l")){
+    if (input$cntr_sort_m %in% c("us_m", "custom_m")){
       fnl_tbl <- most_common_country_prop %>%
       rbind(most_common_us_prop) %>%
   	  filter(Date >= input$date_most_common[1]
   	         & Date <= input$date_most_common[2]
-  	         & Country %in% selected_country_l()) %>%
+  	         & Country %in% selected_country_m()) %>%
       arrange(Date, Country)
     } else{
       fnl_tbl <- most_common_country_prop %>%
   	  filter(Date >= input$date_most_common[1]
   	         & Date <= input$date_most_common[2]
-  	         & Country %in% selected_country_l())
+  	         & Country %in% selected_country_m())
     }    
     return (fnl_tbl)
   })
@@ -733,8 +733,8 @@ output$most_common_pie_pl <- renderHighchart({
     select(Region, Country, country_total, region_total) %>%
     unique() %>% ungroup() %>% arrange(Region, Country)
   data4pie_us <- most_common_us %>%
-  filter(most_common_us$Date >= input$date_all_country[1]
-         & most_common_us$Date <= input$date_all_country[2]) %>%
+  filter(most_common_us$Date >= input$date_most_common[1]
+         & most_common_us$Date <= input$date_most_common[2]) %>%
     group_by(Country) %>%
     summarise_(us_total=paste0("sum(`",cntr_reactive$selected_metric_m,"`)")) %>% ungroup()
   hc <- highchart() %>%
